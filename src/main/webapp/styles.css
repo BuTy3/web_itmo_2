@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+header {
+    position: sticky;
+    border-bottom: 2px solid #ddd; /* Нижняя граница шапки */
+    font-weight: 500;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header_table {
+    border: 0 solid #000000;
+    background-color: #FFF8DC	;
+    text-align: center;
+    height: 80px;
+    font-size: 24px;
+    font-family: sans-serif;
+    color: #333;
+
+}
+
+.main_table {
+    color: black;
+}
+
+.main_table td {
+    /*border: 1px solid #000000; !* Границы ячеек *!*/
+    text-align: center;
+}
+
+#main_left1{
+    height: 150px;
+}
+
+#main_right {
+    width: 35%;
+    height: 300px;
+}
+
+#chart_block {
+    height: 290px;
+    width: 290px;
+    margin: 5px auto;
+    border: 5px solid #ad9fb8;
+    border-bottom: 0;
+    border-top-style: solid;
+    border-style: double;
+    border-radius: 15px 50%;
+}
+
+/*#thema-button */
+.head-button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Закругляем края, чтобы кнопка стала круглой */
+    background-color: #095467;
+    border: none;
+    color: white;
+    cursor: pointer; /* Указатель мыши изменяется на руку при наведении на кнопку */
+}
+
+#clear-button {
+    width: 70px;
+    border-radius: 10%;
+}
+
+
+.input_n {
+    width: 20%;
+    margin: 0 0 0 1%;
+    border-radius: 7px;
+    border: 1px solid #000000;
+}
+
+.check {
+    margin-top: 2%;
+}
+
+#main_4_button {
+    height: 40px;
+    padding: 0 0 20px 0;
+}
+
+.submit_button {
+    border-radius: 7px;
+    border: 1px solid #000000;
+    background-color: #FFF8DC;
+}
+
+.submit_button:hover {
+    background-color: #e6dbb1;
+    cursor: pointer; /* Указатель мыши изменяется на руку при наведении на кнопку */
+    /*color: white;*/
+}
+
+.res_table {
+    width: 80%;
+    margin: 0 auto;
+    /*border: 1px solid #000000; !* Границы ячеек *!*/
+}
+
+
+.res_table td {
+    border: 1px solid #000000; /* Границы ячеек */
+}
+
+#res_table_header {
+    background-color: #FFF8DC	;
+}
+
+
+/* Тёмная тема */
+
+.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-theme .header_table {
+    background-color: #095467;
+    color: #e0e0e0;
+}
+
+.dark-theme .main_table {
+    color: #e0e0e0;
+}
+
+.dark-theme .submit_button {
+    background-color: #095467;
+    border-color: #095467;
+    color: white;
+}
+
+.dark-theme .submit_button:hover {
+    background-color: #074154;
+    border-color: #074154;
+}
+
+.dark-theme #chart_block {
+    border-color: #e0e0e0;
+}
+
+.dark-theme .res_table {
+    border-color: #333;
+    background-color: #777891;
+}
+
+.dark-theme #res_table_header {
+    background-color: #095467;
+    color: white;
+}
+
+.dark-theme .head-button {
+    background-color: #FFF8DC;
+    color: black;
+}
