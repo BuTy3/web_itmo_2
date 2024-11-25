@@ -1,6 +1,7 @@
 package ru.itmo.web;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,12 +10,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class AreaCheckServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(AreaCheckServlet.class);
-    // private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,11 +26,18 @@ public class AreaCheckServlet extends HttpServlet {
 
         logger.info("Area результат: isInside={}", isInside);
 
+        // Установка cookie с результатом isInside
+        Cookie resultCookie = new Cookie("isInside", Boolean.toString(isInside));
+        resultCookie.setMaxAge(1);
+        resultCookie.setPath("/"); // Доступно на всем сайте
+        response.addCookie(resultCookie);
+        logger.info("Cookie isInside установлено: {}", resultCookie.getValue());
+
+        // Передача атрибутов в JSP
         request.setAttribute("x", x);
         request.setAttribute("y", y);
         request.setAttribute("r", r);
         request.setAttribute("isInside", isInside);
-        // request.setAttribute("currentTime", LocalDateTime.now().format(formatter));
 
         HttpSession session = request.getSession();
         ResultBean resultBean = (ResultBean) session.getAttribute("resultBean");

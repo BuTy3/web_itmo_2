@@ -38,7 +38,7 @@
 
             <td id="main_left1_r">
                 <label for="r">Введите координату R:</label>
-                <input class="input_n" type="number" id="r" name="r" min="2" max="5" step="0.01" placeholder="от 2 до 5">
+                <input class="input_n" type="number" id="r" name="r" min="2" max="4" step="0.01" placeholder="от 2 до 4">
             </td>
 
             <td rowspan="2" id="main_right">
