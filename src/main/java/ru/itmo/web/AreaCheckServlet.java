@@ -31,7 +31,9 @@ public class AreaCheckServlet extends HttpServlet {
         resultCookie.setMaxAge(1);
         resultCookie.setPath("/"); // Доступно на всем сайте
         response.addCookie(resultCookie);
-        logger.info("Cookie isInside установлено: {}", resultCookie.getValue());
+
+//        logger.info("Cookie r установлено: {}", rCookie.getValue());
+//        logger.info("Cookie isInside установлено: {}", resultCookie.getValue());
 
         // Передача атрибутов в JSP
         request.setAttribute("x", x);

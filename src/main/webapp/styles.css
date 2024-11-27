@@ -10,7 +10,7 @@ table {
 
 header {
     position: sticky;
-    border-bottom: 2px solid #ddd; /* Нижняя граница шапки */
+    border-bottom: 2px solid #ddd;
     font-weight: 500;
     top: 0;
     left: 0;
@@ -19,13 +19,12 @@ header {
 
 .header_table {
     border: 0 solid #000000;
-    background-color: #FFF8DC	;
+    background-color: #FFF8DC;
     text-align: center;
     height: 80px;
     font-size: 24px;
     font-family: sans-serif;
     color: #333;
-
 }
 
 .main_table {
@@ -33,7 +32,6 @@ header {
 }
 
 .main_table td {
-    /*border: 1px solid #000000; !* Границы ячеек *!*/
     text-align: center;
 }
 
@@ -50,29 +48,28 @@ header {
     height: 290px;
     width: 290px;
     margin: 5px auto;
-    border: 5px solid #ad9fb8;
-    border-bottom: 0;
-    border-top-style: solid;
-    border-style: double;
-    border-radius: 15px 50%;
+    /*border: 5px solid #ad9fb8;*/
+    /*border-bottom: 0;*/
+    /*border-top-style: solid;*/
+    /*border-style: double;*/
+    border-radius: 15px;
+    background-color: aliceblue;
 }
 
-/*#thema-button */
 .head-button{
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Закругляем края, чтобы кнопка стала круглой */
+    border-radius: 50%;
     background-color: #095467;
     border: none;
     color: white;
-    cursor: pointer; /* Указатель мыши изменяется на руку при наведении на кнопку */
+    cursor: pointer;
 }
 
 #clear-button {
     width: 70px;
     border-radius: 10%;
 }
-
 
 .input_n {
     width: 20%;
@@ -96,29 +93,64 @@ header {
     background-color: #FFF8DC;
 }
 
+.submit_button a{
+    text-decoration: none;
+}
+
 .submit_button:hover {
     background-color: #e6dbb1;
-    cursor: pointer; /* Указатель мыши изменяется на руку при наведении на кнопку */
-    /*color: white;*/
+    cursor: pointer;
 }
 
 .res_table {
-    width: 80%;
-    margin: 0 auto;
-    /*border: 1px solid #000000; !* Границы ячеек *!*/
+    width: 70%;
+    margin: 20px auto;
 }
 
-
 .res_table td {
-    border: 1px solid #000000; /* Границы ячеек */
+    border: 1px solid #000000;
 }
 
 #res_table_header {
-    background-color: #FFF8DC	;
+    background-color: #FFF8DC;
 }
 
+#home_button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #FFF8DC;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    text-align: center;
+    cursor: pointer;
+}
 
-/* Тёмная тема */
+#home_button a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+#home_button:hover {
+    background-color: #e6dbb1;
+    color: black;
+}
+
+#res_table {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#res_table th, #res_table td {
+    text-align: center;
+}
+
+#no_res {
+    text-align: center;  /* Выравнивает текст по горизонтали */
+    margin: 0;
+}
 
 .dark-theme {
     background-color: #121212;
@@ -140,13 +172,19 @@ header {
     color: white;
 }
 
+.dark-theme .submit_button a{
+    color: white;
+    text-decoration: none;
+}
+
 .dark-theme .submit_button:hover {
     background-color: #074154;
     border-color: #074154;
 }
 
 .dark-theme #chart_block {
-    border-color: #e0e0e0;
+    /*border-color: #e0e0e0;*/
+    background-color: rgba(9,8,20,0.94);
 }
 
 .dark-theme .res_table {
@@ -162,4 +200,9 @@ header {
 .dark-theme .head-button {
     background-color: #FFF8DC;
     color: black;
+}
+
+.dark-theme #home_button {
+    background-color: #095467;
+    color: white;
 }

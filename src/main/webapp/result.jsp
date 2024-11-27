@@ -24,13 +24,10 @@
             <td>Группа P3224</td>
             <td>Вариант 412991</td>
             <td><button class="head-button" id="thema-button">!</button></td>
-            <td><button class="head-button" id="clear-button">Удалить точки</button></td>
         </tr>
     </table>
 </header>
-<button class="submit_button">
-    <a href="index.jsp">На главную</a>
-</button>
+<button class="submit_button" id="home_button">На главную</button>
 <table id="res_table" border="1">
     <jsp:useBean id="resultBean" scope="session" class="ru.itmo.web.ResultBean" />
     <c:if test="${not empty resultBean.results}">
@@ -59,9 +56,9 @@
     </c:if>
 
     <c:if test="${empty resultBean.results}">
-        <p>Нет результата</p>
+        <p id="no_res">Нет результата</p>
     </c:if>
 
-<%--<script src="main.js"></script>--%>
+<script src="main.js"></script>
 </body>
 </html>
