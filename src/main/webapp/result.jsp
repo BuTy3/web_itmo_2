@@ -16,6 +16,7 @@
         })();
     </script>
 </head>
+</head>
 <body>
 <header>
     <table class="header_table">
@@ -24,6 +25,7 @@
             <td>Группа P3224</td>
             <td>Вариант 412991</td>
             <td><button class="head-button" id="thema-button">!</button></td>
+            <td><button class="head-button" id="clear-button">Удалить точки</button></td>
         </tr>
     </table>
 </header>
@@ -56,7 +58,7 @@
     </c:if>
 
     <c:if test="${empty resultBean.results}">
-        <p id="no_res">Нет результата</p>
+        <p id="no_res">${resultBean.message}</p>
     </c:if>
 
 <script src="4res.js"></script>

@@ -18,3 +18,11 @@ try {
         window.location.href = "http://localhost:21511/web_server-1.0-SNAPSHOT/index.jsp";
     };
 } catch {}
+
+document.getElementById("clear-button").addEventListener("click", function () {
+    localStorage.removeItem('points');
+    // window.location.reload();
+    fetch('controller?clear=true', { method: 'DELETE' })
+        .then(() => window.location.reload())
+        .catch(error => console.error('Error:', error));
+});

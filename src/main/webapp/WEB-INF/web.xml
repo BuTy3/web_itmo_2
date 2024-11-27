@@ -13,6 +13,11 @@
     <servlet-class>ru.itmo.web.AreaCheckServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>ru.itmo.web.DeleteServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>ControllerServlet</servlet-name>
     <url-pattern>/controller</url-pattern>
@@ -21,5 +26,10 @@
   <servlet-mapping>
     <servlet-name>AreaCheckServlet</servlet-name>
     <url-pattern>/check</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/clear</url-pattern>
   </servlet-mapping>
 </web-app>

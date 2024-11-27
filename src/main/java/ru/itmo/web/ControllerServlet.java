@@ -34,4 +34,21 @@ public class ControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String clearParam = request.getParameter("clear");
+
+        logger.info("Claer запрос: clear={}", clearParam);
+
+        if (clearParam != null) {
+            if (clearParam.equals("true")) {
+                logger.info("Forwarding /clear");
+                getServletContext().getRequestDispatcher("/clear").forward(request, response);
+            } else {
+                logger.info("Forwarding /index.jsp");
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            }
+        }
+    }
 }

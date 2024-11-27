@@ -183,10 +183,10 @@ function redraw() {
 
 document.getElementById("clear-button").addEventListener("click", function () {
     localStorage.removeItem('points');
-    window.location.reload();
-    // fetch('controller?clear=true', { method: 'DELETE' })
-    //     .then(() => window.location.reload())
-    //     .catch(error => console.error('Error:', error));
+    // window.location.reload();
+    fetch('controller?clear=true', { method: 'DELETE' })
+        .then(() => window.location.reload())
+        .catch(error => console.error('Error:', error));
 });
 
 function getCookie(name) {
