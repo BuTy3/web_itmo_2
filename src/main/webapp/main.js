@@ -26,12 +26,6 @@ try {
     var example = document.getElementById("example"),
         ctx = example.getContext('2d');
     ctx.translate(example.width / 2, example.height / 2);
-} catch {ctx = null}
-
-try {
-    document.getElementById('home_button').onclick = function() {
-        window.location.href = "http://localhost:21511/web_server-1.0-SNAPSHOT/index.jsp";
-    };
 } catch {}
 
 function savePointLocally(x, y, r, isHit) {
@@ -189,9 +183,10 @@ function redraw() {
 
 document.getElementById("clear-button").addEventListener("click", function () {
     localStorage.removeItem('points');
-    fetch('controller?clear=true', { method: 'GET' })
-        .then(() => window.location.reload())
-        .catch(error => console.error('Error:', error));
+    window.location.reload();
+    // fetch('controller?clear=true', { method: 'DELETE' })
+    //     .then(() => window.location.reload())
+    //     .catch(error => console.error('Error:', error));
 });
 
 function getCookie(name) {

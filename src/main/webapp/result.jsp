@@ -59,6 +59,6 @@
         <p id="no_res">Нет результата</p>
     </c:if>
 
-<script src="main.js"></script>
+<script src="4res.js"></script>
 </body>
 </html>
