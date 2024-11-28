@@ -44,6 +44,12 @@ public class AreaCheckServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ResultBean resultBean = (ResultBean) session.getAttribute("resultBean");
 
+        if (resultBean == null) {
+            logger.info("Creating new ResultBean for session");
+            resultBean = new ResultBean();
+            session.setAttribute("resultBean", resultBean);
+        }
+
         logger.info("Запись результата в бин: x={}, y={}, r={}, isInside={}", x, y, r, isInside);
         resultBean.addResult(new AreaResult(x, y, r, isInside));
 
