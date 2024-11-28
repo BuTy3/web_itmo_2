@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -67,6 +69,49 @@
             <td colspan="3" id="main_4_button">
                 <input type="submit" value="Проверить" class="submit_button">
             </td>
+        </tr>
+        <tr>
+            <table class="res_table" id="res_table4main" border="1">
+                <jsp:useBean id="resultBean" scope="session" class="ru.itmo.web.ResultBean" />
+                <c:if test="${not empty resultBean.results}">
+                    <thead>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>Результат</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Вычисление начального индекса -->
+                    <c:set var="size" value="${fn:length(resultBean.results)}" />
+                    <c:set var="startIndex" value="${size > 5 ? size - 5 : 0}" />
+
+                    <!-- Итерация начиная с нужного индекса -->
+                    <c:forEach var="result" items="${resultBean.results}" begin="${startIndex}">
+                        <tr>
+                            <td>${result.x}</td>
+                            <td>${result.y}</td>
+                            <td>${result.r}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${result.isInside}">
+                                        Попадание
+                                    </c:when>
+                                    <c:otherwise>
+                                        Пенсия - false
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </c:if>
+                <c:if test="${empty resultBean.results}">
+                    <p id="no_res">${resultBean.message}</p>
+                </c:if>
+            </table>
+
         </tr>
     </table>
 </form>

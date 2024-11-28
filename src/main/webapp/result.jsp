@@ -30,7 +30,7 @@
     </table>
 </header>
 <button class="submit_button" id="home_button">На главную</button>
-<table id="res_table" border="1">
+<table class="res_table" border="1">
     <jsp:useBean id="resultBean" scope="session" class="ru.itmo.web.ResultBean" />
     <c:if test="${not empty resultBean.results}">
     <thead>
@@ -39,6 +39,8 @@
         <th>Y</th>
         <th>R</th>
         <th>Результат</th>
+    </tr>
+    </thead>
     <c:forEach var="result" items="${resultBean.results}">
     <tr>
         <td>${result.x}</td>

@@ -137,14 +137,20 @@ header {
     color: black;
 }
 
-#res_table {
+.res_table {
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
 }
 
-#res_table th, #res_table td {
+.res_table th, .res_table td {
     text-align: center;
+}
+
+#res_table4main{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 #no_res {
@@ -190,6 +196,10 @@ header {
 .dark-theme .res_table {
     border-color: #333;
     background-color: #777891;
+}
+
+.dark-theme .res_table thead{
+    background-color: #074154;
 }
 
 .dark-theme #res_table_header {
