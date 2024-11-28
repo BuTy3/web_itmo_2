@@ -83,11 +83,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- Вычисление начального индекса -->
                     <c:set var="size" value="${fn:length(resultBean.results)}" />
                     <c:set var="startIndex" value="${size > 5 ? size - 5 : 0}" />
 
-                    <!-- Итерация начиная с нужного индекса -->
                     <c:forEach var="result" items="${resultBean.results}" begin="${startIndex}">
                         <tr>
                             <td>${result.x}</td>

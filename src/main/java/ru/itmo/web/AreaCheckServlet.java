@@ -29,7 +29,7 @@ public class AreaCheckServlet extends HttpServlet {
         // Установка cookie с результатом isInside
         Cookie resultCookie = new Cookie("isInside", Boolean.toString(isInside));
         resultCookie.setMaxAge(1);
-        resultCookie.setPath("/"); // Доступно на всем сайте
+        resultCookie.setPath("/");
         response.addCookie(resultCookie);
 
 //        logger.info("Cookie r установлено: {}", rCookie.getValue());
@@ -43,12 +43,6 @@ public class AreaCheckServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         ResultBean resultBean = (ResultBean) session.getAttribute("resultBean");
-
-        if (resultBean == null) {
-            logger.info("Создание нового бина");
-            resultBean = new ResultBean();
-            session.setAttribute("resultBean", resultBean);
-        }
 
         logger.info("Запись результата в бин: x={}, y={}, r={}, isInside={}", x, y, r, isInside);
         resultBean.addResult(new AreaResult(x, y, r, isInside));

@@ -16,7 +16,6 @@
         })();
     </script>
 </head>
-</head>
 <body>
 <header>
     <table class="header_table">

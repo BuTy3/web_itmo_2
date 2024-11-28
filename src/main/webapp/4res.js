@@ -13,11 +13,11 @@ function toggleTheme() {
 
 themeToggleButton.addEventListener('click', toggleTheme);
 
-try {
-    document.getElementById('home_button').onclick = function() {
-        window.location.href = "http://localhost:21511/web_server-1.0-SNAPSHOT/index.jsp";
-    };
-} catch {}
+
+document.getElementById('home_button').onclick = function() {
+    window.location.href = "http://localhost:21511/web_server-1.0-SNAPSHOT/index.jsp";
+};
+
 
 document.getElementById("clear-button").addEventListener("click", function () {
     localStorage.removeItem('points');
