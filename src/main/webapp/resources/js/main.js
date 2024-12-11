@@ -154,17 +154,20 @@ function base() {
 }
 
 function shapes() {
+    // треугольник
     ctx.beginPath();
-    ctx.moveTo(0, 260 / 3);
-    ctx.lineTo(260 / 3, 0);
+    ctx.moveTo(0, -130 / 3);
+    ctx.lineTo(-130 / 3, 0);
     ctx.lineTo(0, 0);
     ctx.closePath();
     ctx.fillStyle = 'blue';
     ctx.fill();
     ctx.fillStyle = 'blue';
-    ctx.fillRect(0, -130 / 3, 260 / 3, 130 / 3);
+    // прямоугольник
+    ctx.fillRect(0, 0, -130 / 3, 260 / 3);
+    // 1/4 круга
     ctx.beginPath();
-    ctx.arc(0, 0, 260 / 3, Math.PI, 3 * Math.PI / 2);
+    ctx.arc(0, 0, 260 / 3, 0, -3 * Math.PI / 2);
     ctx.lineTo(0, 0);
     ctx.closePath();
     ctx.fillStyle = 'blue';

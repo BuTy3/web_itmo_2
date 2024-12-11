@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Welcome to Lab Work</title>
+    <h:outputStylesheet name="styles/css4index.css"/>
+    <h:outputStylesheet name="styles/common.css"/>
+    <script type="text/javascript">
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+            }
+        })();
+    </script>
+</h:head>
+<h:body>
+    <header>
+        <div id="inform">
+            <b>Леонтьев Виктор Александрович</b>
+            <b>Группа P3224</b>
+            <b>Вариант 412991</b>
+        </div>
+        <div id="buttons">
+            <button class="head-button" id="thema-button">!</button>
+        </div>
+    </header>
+
+    <div id="main_container">
+        <div id="clock-container">
+            <h2>Текущее время:</h2>
+            <p id="clock">Загрузка...</p>
+        </div>
+        <div id="button">
+            <h:form>
+                <h:commandButton value="Перейти к проверке точки"
+                                 action="goToMain"
+                                 styleClass="button"/>
+            </h:form>
+        </div>
+
+        <!-- Кнопка для отображения трансляции с веб-камеры -->
+        <div id="bored-button">
+            <button id="bored-toggle">Мне скучно</button>
+        </div>
+
+        <!-- Контейнер для трансляции с веб-камеры -->
+        <div id="webcam-container" style="display:none;">
+            <video id="webcam" width="100%" height="auto" autoplay="autoplay"></video>
+        </div>
+    </div>
+
+<!--    <h:outputScript name="js/clock.js"/>-->
+    <h:outputScript name="js/4index.js"/>
+    <h:outputScript name="js/common.js"/>
+</h:body>
+</html>

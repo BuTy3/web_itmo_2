@@ -1,0 +1,145 @@
+#main_container {
+    display: block;
+}
+
+#main_container > div {
+    display: block;
+}
+
+/* Часы */
+#clock-container {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#clock {
+    font-size: 36px;
+    font-family: 'Courier New', monospace;
+    color: #095467;
+    padding: 10px 20px;
+    border: 2px solid #095467;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #d7e5ff, #ffffff);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+}
+
+/* Кнопка перехода */
+#button {
+    display: inline-block;
+    width: 20%; /* Ограничиваем ширину до 30% */
+    margin: 10px 38%; /* Центрируем кнопку */
+}
+
+.button {
+    display: block; /* Сделать ссылку блочным элементом */
+    width: 100%; /* Занимает всю ширину контейнера */
+    height: 100%; /* Занимает всю высоту контейнера */
+    padding: 12px 30px; /* Уменьшены отступы */
+    font-size: 18px;
+    font-family: sans-serif;
+    color: black;
+    background: #FFF8DC; /* Цвет фона */
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none; /* Убираем подчеркивание */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer; /* Курсор в виде руки */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Анимация */
+    margin-left: 25px;
+}
+
+.button:hover {
+    transform: translateY(-5px); /* Поднимается при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Более выраженная тень */
+    background-color: #E1D5A5; /* Немного темнее цвет фона при наведении */
+}
+
+.button:active {
+    transform: translateY(2px); /* Опускается при клике */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшение тени */
+    background-color: #D1C58E; /* Еще более темный цвет при нажатии */
+}
+
+#webcam-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#webcam {
+    width: 30%;
+    height: 10%;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+/* Кнопка "Мне скучно" */
+#bored-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#bored-toggle {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #FFF8DC;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+    /* Удалено свойство transition, чтобы цвет не плавно менялся при смене темы */
+}
+
+#bored-toggle:hover {
+    transform: translateY(-5px); /* Поднимается при наведении */
+    background-color: #E1D5A5;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Более выраженная тень */
+}
+
+#bored-toggle:active {
+    transform: translateY(2px); /* Опускается при клике */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшение тени */
+    background-color: #D1C58E; /* Еще более темный цвет при нажатии */
+}
+
+.dark-theme #clock {
+    color: #E0E0E0; /* Светлый текст для часов */
+    border-color: #E0E0E0; /* Цвет границы */
+    background: linear-gradient(135deg, #333, #444); /* Темный фон для часов */
+}
+
+.dark-theme .button {
+    background-color: #095467; /* Цвет кнопки в темной теме */
+    color: #E0E0E0; /* Светлый текст на кнопке */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Светлая тень */
+}
+
+.dark-theme .button:hover {
+    background-color: #074154; /* Темнее при наведении */
+    color: #E0E0E0; /* Оставляем текст светлым */
+}
+
+.dark-theme .button:active {
+    background-color: #063d42; /* Еще более темный при клике */
+    color: #E0E0E0; /* Оставляем текст светлым */
+}
+
+.dark-theme #webcam {
+    border-color: #000000;
+}
+
+.dark-theme #bored-toggle {
+    background-color: #095467; /* Цвет кнопки в тёмной теме */
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Светлая тень */
+}
+
+.dark-theme #bored-toggle:hover {
+    background-color: #074154; /* Темнее при наведении */
+}
+
+.dark-theme #bored-toggle:active {
+    background-color: #063d42; /* Еще более темный при клике */
+}
