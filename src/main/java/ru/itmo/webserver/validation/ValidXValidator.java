@@ -9,16 +9,13 @@ import jakarta.faces.validator.ValidatorException;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import java.util.Set;
-
 @FacesValidator("validXValidation")
 public class ValidXValidator implements ConstraintValidator<ValidX, Double>, Validator<Object> {
-    private final Set<Double> validXValues = Set.of(-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0);
 
     // Bean Validation
     @Override
     public boolean isValid(Double value, ConstraintValidatorContext context) {
-        return value != null && validXValues.contains(value);
+        return value != null && -5 <= value && value <= 5;
     }
 
     // JSF Validation
@@ -29,9 +26,11 @@ public class ValidXValidator implements ConstraintValidator<ValidX, Double>, Val
                     "Validation Error", "Invalid input: value must be a number."));
         }
 
-        if (!validXValues.contains(doubleValue)) {
+
+        if (!(0.1 <= doubleValue && doubleValue <= 3.0)) {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Validation Error", "Invalid input: value must be one of " + validXValues));
+                    "Validation Error", "Invalid input: " + doubleValue));
         }
     }
+
 }

@@ -36,30 +36,6 @@ public class ResultService implements Serializable {
     }
 
     /**
-     * Извлекает результат по его идентификатору.
-     *
-     * @param id идентификатор результата.
-     * @return объект Result или null, если объект не найден.
-     */
-    @Transactional
-    public Result findById(Long id) {
-        return em.find(Result.class, id);
-    }
-
-    /**
-     * Удаляет результат из базы данных по его идентификатору.
-     *
-     * @param id идентификатор результата, который нужно удалить.
-     */
-    @Transactional
-    public void deleteById(Long id) {
-        Result result = findById(id);
-        if (result != null) {
-            em.remove(result);
-        }
-    }
-
-    /**
      * Удаляет все результаты из базы данных.
      */
     @Transactional

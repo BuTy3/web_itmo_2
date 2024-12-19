@@ -17,7 +17,7 @@ public class InputBean implements Serializable {
 
     @Getter
     @Setter
-    private Result result = new Result(); // Используем объект Result для хранения данных
+    private Result result = new Result();
 
     @Inject
     private ValidationBean validationBean;
@@ -30,15 +30,11 @@ public class InputBean implements Serializable {
      */
     public void processInput() {
         try {
-            // Валидация входных данных
             validationBean.validateInput(result);
 
-            // Выполнение проверки попадания точки
             resultBean.checkHit(result);
 
-            // Текущее состояние Result сохраняется
         } catch (IllegalArgumentException e) {
-            // Обработка ошибок валидации
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ошибка валидации", e.getMessage()));
         }

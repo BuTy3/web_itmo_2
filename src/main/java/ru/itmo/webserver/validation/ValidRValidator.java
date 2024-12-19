@@ -9,18 +9,15 @@ import jakarta.faces.validator.ValidatorException;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import java.util.Set;
-
 /**
  * Валидатор для проверки допустимых значений радиуса R.
  */
 @FacesValidator("validRValidation")
 public class ValidRValidator implements ConstraintValidator<ValidR, Double>, Validator<Object> {
-    private final Set<Double> validRValues = Set.of(1.0, 2.0, 3.0, 4.0, 5.0);
 
     @Override
     public boolean isValid(Double value, ConstraintValidatorContext context) {
-        return value != null && validRValues.contains(value);
+        return value != null && 0.1 <= value && value <= 3.0;
     }
 
     @Override
@@ -30,9 +27,10 @@ public class ValidRValidator implements ConstraintValidator<ValidR, Double>, Val
                     "Validation Error", "Invalid input: value must be a number."));
         }
 
-        if (!validRValues.contains(doubleValue)) {
+
+        if (!(0.1 <= doubleValue && doubleValue <= 3.0)) {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Validation Error", "Invalid input: value must be one of " + validRValues));
+                    "Validation Error", "Invalid input: " + doubleValue));
         }
     }
 }

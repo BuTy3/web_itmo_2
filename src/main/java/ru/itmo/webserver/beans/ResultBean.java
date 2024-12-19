@@ -3,6 +3,7 @@ package ru.itmo.webserver.beans;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.json.bind.annotation.JsonbProperty;
 import ru.itmo.webserver.res.Result;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 public class ResultBean implements Serializable {
 
     @Inject
-    private ResultListBean resultListBean; // Бин для управления списком результатов
+    private ResultListBean resultListBean;
 
     /**
      * Обработчик попадания точки.
@@ -20,10 +21,7 @@ public class ResultBean implements Serializable {
      * @param result объект Result, который нужно обработать.
      */
     public void checkHit(Result result) {
-        // Проверка попадания в область
         result.setHit(checkPoint(result));
-
-        // Сохранение результата
         saveResult(result);
     }
 
@@ -46,19 +44,18 @@ public class ResultBean implements Serializable {
         double x = result.getX();
         double y = result.getY();
         double r = result.getR();
+        System.out.print("x: " + x + ", y: " + y + ", r: " + r + "\n");
 
-        // Четверть круга в левом нижнем углу
-        if (x <= 0 && y <= 0 && (x * x + y * y <= r * r / 4)) {
-            return true;
+        if (x >= -5 && x <= 5 && y >= -3 && y <= 3 && r >= 0.1 && r <= 3) {
+            if (x <= 0 && y <= 0) {
+                return x >= -r/2 && y >= -r;
+            } else if (x <= 0 && y >= 0) {
+                return y <= x + r/2 && x >= -r / 2 && y <= r / 2;
+            } else if (x >= 0 && y <= 0) {
+                return x * x + y * y <= Math.pow(r, 2);
+            }
         }
-
-        // Треугольник в верхнем правом углу
-        if (x >= 0 && y >= 0 && y <= r - (x * 2)) {
-            return true;
-        }
-
-        // Прямоугольник в верхнем левом углу
-        return x <= 0 && x >= -(r / 2) && y <= r && y >= 0;
+        return false;
     }
 
     /**
@@ -66,14 +63,5 @@ public class ResultBean implements Serializable {
      */
     public void clearResults() {
         resultListBean.clearResults();
-    }
-
-    /**
-     * Удаляет результат по идентификатору.
-     *
-     * @param id идентификатор результата для удаления.
-     */
-    public void deleteResult(Long id) {
-        resultListBean.deleteResult(id);
     }
 }

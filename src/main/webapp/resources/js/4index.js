@@ -1,3 +1,18 @@
+const themeToggleButton = document.getElementById('thema-button');
+var flag_theme = document.documentElement.classList.contains('dark-theme');
+
+function toggleTheme() {
+    document.documentElement.classList.toggle('dark-theme');
+    flag_theme = document.documentElement.classList.contains('dark-theme');
+    if (flag_theme) {
+        localStorage.setItem('theme', 'dark');
+    } else {
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+themeToggleButton.addEventListener('click', toggleTheme);
+
 // Обновление часов каждые 10 секунд
 function updateClock() {
     const clockElement = document.getElementById('clock');
@@ -8,21 +23,18 @@ function updateClock() {
 }
 
 setInterval(updateClock, 10000);
-updateClock(); // Первоначальная установка времени
+updateClock();
 
-// Доступ к веб-камере и отображение изображения
 const webcamElement = document.getElementById('webcam');
 
 navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
-        // Отправляем поток в элемент video
         webcamElement.srcObject = stream;
     })
     .catch(error => {
         console.error('Ошибка доступа к веб-камере:', error);
     });
 
-// Функция для отображения или скрытия видеопотока с веб-камеры
 const boredButton = document.getElementById('bored-toggle');
 const webcamContainer = document.getElementById('webcam-container');
 

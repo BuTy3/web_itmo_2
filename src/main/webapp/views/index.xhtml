@@ -32,7 +32,7 @@
             <h2>Текущее время:</h2>
             <p id="clock">Загрузка...</p>
         </div>
-        <div id="button">
+        <div id="button" class="all_button">
             <h:form>
                 <h:commandButton value="Перейти к проверке точки"
                                  action="goToMain"
@@ -46,13 +46,11 @@
         </div>
 
         <!-- Контейнер для трансляции с веб-камеры -->
-        <div id="webcam-container" style="display:none;">
+        <div id="webcam-container" style="display:none;" >
             <video id="webcam" width="100%" height="auto" autoplay="autoplay"></video>
         </div>
     </div>
 
-<!--    <h:outputScript name="js/clock.js"/>-->
     <h:outputScript name="js/4index.js"/>
-    <h:outputScript name="js/common.js"/>
 </h:body>
 </html>

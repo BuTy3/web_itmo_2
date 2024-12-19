@@ -50,19 +50,6 @@ public class ResultListBean implements Serializable {
     }
 
     /**
-     * Удаляет конкретный результат по его ID.
-     *
-     * @param id идентификатор результата, который нужно удалить.
-     */
-    public void deleteResult(Long id) {
-        // Удаляем результат из базы данных
-        resultService.deleteById(id);
-
-        // Удаляем результат из локального списка по ID
-        results.removeIf(result -> result.getId().equals(id));
-    }
-
-    /**
      * Обновляет локальный список результатов из базы данных.
      */
     public void refreshResults() {

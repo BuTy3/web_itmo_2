@@ -6,10 +6,9 @@
 
 <h:head>
     <title>Lab Work</title>
-<!--    <h:outputStylesheet name="/styles/main.css"/>-->
-
+    <h:outputStylesheet name="/styles/styles.css"/>
     <h:outputStylesheet name="/styles/common.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <h:outputStylesheet name="/styles/css4index.css"/>
 
     <script type="text/javascript">
         (function () {
@@ -29,56 +28,33 @@
         </div>
         <div id="buttons">
             <button class="head-button" id="thema-button">!</button>
-            <h:commandButton value="Удалить точки" action="#{resultBean.clearResults}" styleClass="head-button" id="clear-button"/>
         </div>
     </header>
-<!--    <div class="container">-->
-<!--        <div class="header">-->
-<!--            <h1>Coordinate Plane Checke</h1>-->
-<!--        </div>-->
 
-<!--        <div class="graph-container">-->
-<!--            <canvas id="example" width="600" height="600">-->
-<!--            </canvas>-->
-
-<!--            &lt;!&ndash; Включаем переиспользуемый компонент формы ввода &ndash;&gt;-->
-<!--            <ui:include src="/templates/inputForm.xhtml"/>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Включаем переиспользуемый компонент таблицы результатов &ndash;&gt;-->
-<!--        <ui:include src="/templates/resultsTable.xhtml"/>-->
-
-<!--        <h:form>-->
-<!--            <h:commandButton value="Return to Index" action="goToIndex" styleClass="button"/>-->
-<!--        </h:form>-->
-<!--    </div>-->
-
-        <div class="main_table">
-            <div id="input_form">
+    <table class="main_table">
+        <tr>
+            <td id="main_left1_l">
                 <ui:include src="/templates/inputForm.xhtml"/>
-            </div>
+            </td>
 
-                <div id="main_right">
-                    <div id="chart_block">
-                        <canvas height="600" width="600" id="example"> </canvas>
-                    </div>
+            <td id="main_right">
+                <div id="chart_block">
+                    <canvas height="620" width="620" id="example"> </canvas>
                 </div>
-            <div id="main_buttons">
-
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
                 <h:form>
-<!--                    <h:commandButton value="Проверить" action="#{inputBean.processInput}" styleClass="button"/>-->
-                    <h:commandButton value="Вернуться в начало" action="goToIndex" styleClass="button"/>
+                    <h:commandButton value="Начальная страница" action="goToIndex" styleClass="home_button" id="home_button"/>
                 </h:form>
-            </div>
+            </td>
+        </tr>
+        <tr>
+            <ui:include src="/templates/resultsTable.xhtml"/>
+        </tr>
+    </table>
 
-            <div id="res_table">
-                <ui:include src="/templates/resultsTable.xhtml"/>
-            </div>
-        </div>
-
-
-    <h:outputScript name="js/graph.js"/>
-    <h:outputScript name="js/4aldgraf.js"/>
-    <h:outputScript name="js/common.js"/>
 </h:body>
+<h:outputScript name="js/canvas.js"/>
 </html>

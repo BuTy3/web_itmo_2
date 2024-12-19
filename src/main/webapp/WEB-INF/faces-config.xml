@@ -19,7 +19,7 @@
         <from-view-id>/*</from-view-id>
         <navigation-case>
             <from-outcome>goToIndex</from-outcome>
-            <to-view-id>/views/index.html</to-view-id>
+            <to-view-id>/views/index.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
     </navigation-rule>
