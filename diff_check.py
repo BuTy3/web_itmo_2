@@ -12,9 +12,9 @@ is_blocked_change = any(
 )
 
 if is_blocked_change:
-    print("[WARN] Найдены изменения в отслеживаемых путях из params.props. Коммит отменён.")
+    print("[WARN] Найдены изменения в отслеживаемых путях. Коммит отменён.")
     exit(1)
 else:
-    print("[OK] Нет изменений в отслеживаемых путях. Выполняем авто-коммит.")
+    print("[OK] Нет изменений. Выполнение авто-коммит.")
     subprocess.run(["git", "add", "."], check=True)
     subprocess.run(["git", "commit", "-m", "Auto commit (нет изменений в критичных файлах)"], check=True)
