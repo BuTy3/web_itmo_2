@@ -67,6 +67,20 @@
       <classifier>jakarta</classifier><!-- Укажите актуальную версию -->
     </dependency>
 
+<!--    <dependency>-->
+<!--      <groupId>org.testng</groupId>-->
+<!--      <artifactId>testng</artifactId>-->
+<!--      <version>RELEASE</version>-->
+<!--      <scope>test</scope>-->
+<!--    </dependency>-->
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.1</version>
+      <scope>test</scope>
+    </dependency>
+
 
     <!--<dependency>
         <groupId>org.primefaces</groupId>
@@ -110,3 +124,5 @@
     </plugins>
   </build>
 </project>
+
+

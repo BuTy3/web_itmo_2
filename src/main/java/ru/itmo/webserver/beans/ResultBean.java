@@ -40,7 +40,7 @@ public class ResultBean implements Serializable {
      * @param result объект Result с параметрами для проверки попадания.
      * @return true, если точка попадает в область, иначе false.
      */
-    private boolean checkPoint(Result result) {
+    public boolean checkPoint(Result result) {
         double x = result.getX();
         double y = result.getY();
         double r = result.getR();

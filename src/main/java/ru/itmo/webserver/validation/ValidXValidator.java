@@ -26,11 +26,11 @@ public class ValidXValidator implements ConstraintValidator<ValidX, Double>, Val
                     "Validation Error", "Invalid input: value must be a number."));
         }
 
-
-        if (!(0.1 <= doubleValue && doubleValue <= 3.0)) {
+        if (!( -5 <= doubleValue && doubleValue <= 5)) {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Validation Error", "Invalid input: " + doubleValue));
         }
     }
+
 
 }

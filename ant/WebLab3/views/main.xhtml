@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Lab Work</title>
+    <h:outputStylesheet name="/styles/styles.css"/>
+    <h:outputStylesheet name="/styles/common.css"/>
+    <h:outputStylesheet name="/styles/css4index.css"/>
+
+    <script type="text/javascript">
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+            }
+        })();
+    </script>
+</h:head>
+<h:body>
+    <header>
+        <div id="inform">
+            <b>Леонтьев Виктор Александрович</b>
+            <b>Группа P3224</b>
+            <b>Вариант 412991</b>
+        </div>
+        <div id="buttons">
+            <button class="head-button" id="thema-button">!</button>
+        </div>
+    </header>
+
+    <table class="main_table">
+        <tr>
+            <td id="main_left1_l">
+                <ui:include src="/templates/inputForm.xhtml"/>
+            </td>
+
+            <td id="main_right">
+                <div id="chart_block">
+                    <canvas height="620" width="620" id="example"> </canvas>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h:form>
+                    <h:commandButton value="Начальная страница" action="goToIndex" styleClass="home_button" id="home_button"/>
+                </h:form>
+            </td>
+        </tr>
+        <tr>
+            <ui:include src="/templates/resultsTable.xhtml"/>
+        </tr>
+    </table>
+
+</h:body>
+<h:outputScript name="js/canvas.js"/>
+</html>

@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 2px solid #ddd;
+    background-color: #FFF8DC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+    font-weight: 500;
+    font-family: sans-serif;
+    font-size: 24px;
+    color: #333;
+}
+
+#inform {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.head-button{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #095467;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#clear-button {
+    width: 70px;
+    border-radius: 10%;
+}
+
+
+
+
+
+
+/* Стили для тёмной темы */
+.dark-theme body {
+    background-color: #121212; /* Темный фон */
+    color: #E0E0E0; /* Светлый текст */
+}
+
+.dark-theme header {
+    background-color: #095467; /* Цвет кнопок в шапке */
+    color: #E0E0E0; /* Светлый текст в шапке */
+}
+
+.dark-theme .head-button {
+    background-color: #074154; /* Цвет кнопок в шапке для тёмной темы */
+}
+
+.dark-theme #clear-button {
+    background-color: #074154; /* Цвет кнопки для очистки */
+    color: #E0E0E0;
+}

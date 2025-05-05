@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <h:form styleClass="form-grid" id="form" onsubmit="return validateForm();">
+        <table>
+            <tr>
+                <td class="form-row" id="4x">
+                    <h:outputLabel for="x" value="Координата Х:" styleClass="form-label"/>
+                    <p:spinner id="x" value="#{inputBean.result.x}" min="-5" max="5" stepFactor="1" required="true" />
+                </td>
+                <td class="form-row" id="4r">
+                    <h:outputLabel for="r" value="Радиус R:" styleClass="form-label"/>
+                    <p:spinner id="r" value="#{inputBean.result.r}" min="0.1" max="3" stepFactor="0.1" required="true"
+                               styleClass="select-menu"   />
+                </td>
+            </tr>
+            <tr>
+                <td class="form-row" id="4y" colspan="2">
+                        <h:outputLabel for="y" value="Координата Y:" styleClass="form-label"/>
+                        <h:inputText id="y" value="#{inputBean.result.y}" required="true" styleClass="input-field">
+                            <f:validateDoubleRange minimum="-3" maximum="3"/>
+                        </h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td><h:commandButton value="Проверить" action="#{inputBean.processInput}" styleClass="button-centered" id="sb_but"/></td>
+                <td><h:commandButton value="Удалить точки" action="#{resultBean.clearResults}" styleClass="button-centered"/></td>
+            </tr>
+        </table>
+    </h:form>
+
+</ui:composition>

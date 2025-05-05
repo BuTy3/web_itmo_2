@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WebLab3" default="build">
+    <property file="build.properties"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+        <pathelement location="${lombok}"/>
+        <fileset dir="${main.dir}" includes="*.java"/>
+    </path>
+
+
+    <path id="classpath.test">
+        <pathelement location="${junit}"/>
+        <pathelement location="${hamcrest}"/>
+        <pathelement location="${classes.dir}"/>
+    </path>
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${lib.dir}/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+<!--    <taskdef name="scp" classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp">-->
+<!--        <classpath>-->
+<!--            <pathelement location="${lib.dir}/ant-jsch-1.10.14.jar"/>-->
+<!--            <pathelement location="${lib.dir}/jsch-0.1.55.jar"/>-->
+<!--        </classpath>-->
+<!--    </taskdef>-->
+
+
+    <target name="compile" depends="clean">
+        <echo message="====== COMPILE STARTED ======" />
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false"/>
+        <echo message="====== COMPILE COMPLETED ======"/>
+    </target>
+
+    <target name="build" depends="compile">
+        <echo message="====== BUILD STARTED ======" />
+        <copy todir="${build.dir}">
+            <fileset dir="${web.dir}"/>
+        </copy>
+        <copy todir="${build.dir.lib}">
+            <fileset dir="${lib.dir}"/>
+        </copy>
+        <copy todir="${classes.dir}">
+            <fileset dir="${resources.dir}"/>
+        </copy>
+
+        <jar destfile="${ant.dir}/${ant.project.name}.jar">
+            <fileset dir="${classes.dir}"/>
+            <manifest>
+                <attribute name="Created-By" value="Viktor"/>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Main-Class" value="NoClass"/>
+            </manifest>
+        </jar>
+
+        <war destfile="${ant.dir}/${ant.project.name}.war" webxml="${build.web.xml}">
+            <fileset dir="${build.dir}"/>
+            <manifest>
+                <attribute name="Created-By" value="Viktor"/>
+                <attribute name="Manifest-Version" value="1.0"/>
+                <attribute name="Main-Class" value="NoClass"/>
+            </manifest>
+        </war>
+        <echo message="====== BUILD COMPLETED ======" />
+    </target>
+
+    <target name="clean">
+        <echo message="====== CLEAN начал работу ======" />
+        <delete dir="${ant.dir}"/>
+        <delete dir="${junit.report.dir}"/>
+        <echo message="====== CLEAN завершил работу ======" />
+    </target>
+
+    <target name="test" depends="build">
+        <echo message="====== TEST STARTED ======"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <mkdir dir="${junit.report.dir}"/>
+        <javac destdir="${test.classes.dir}" srcdir="${test.dir}" includeantruntime="false" encoding="utf-8">
+            <classpath refid="classpath.test"/>
+        </javac>
+        <junit printsummary="on" haltonfailure="true" haltonerror="true" failureproperty="tests.failed">
+            <classpath>
+                <path refid="classpath.test"/>
+                <pathelement location="${test.classes.dir}"/>
+            </classpath>
+            <batchtest fork="yes" todir="${junit.report.dir}">
+                <formatter type="plain"/>
+                <fileset dir="${test.dir}" includes="*Test.java"/>
+            </batchtest>
+        </junit>
+        <echo message="====== TEST COMPLETED ======" />
+    </target>
+
+    <target name="xml">
+        <echo message="====== XML VALIDATION STARTED ======" />
+        <xmlvalidate lenient="true" failonerror="true">
+            <fileset dir="." includes="*.xml,**/*.xml"/>
+            <fileset dir="${web.dir}/WEB-INF" includes="*.xml"/>
+        </xmlvalidate>
+        <echo message="====== XML VALIDATION COMPLETED ======"/>
+    </target>
+
+    <target name="diff">
+        <echo message="====== DIFF STARTED ======"/>
+
+        <exec executable="git" outputproperty="changed.files" failonerror="false">
+            <arg line="diff --name-only ${first.rev} HEAD"/>
+        </exec>
+
+        <exec executable="git" output="${diff.file}" failonerror="false">
+            <arg value="diff"/>
+            <arg value="${first.rev}"/>
+            <arg value="HEAD"/>
+        </exec>
+
+        <condition property="has.main.changes">
+            <matches string="${changed.files}" pattern="^src/main/java/.*" multiline="true"/>
+        </condition>
+
+        <fail if="has.main.changes"
+              message="Изменены файлы в src/main/java — коммит запрещён. DIFF сохранён в ${diff.file}"/>
+
+        <exec executable="git">
+            <arg line="add ."/>
+        </exec>
+
+        <exec executable="git">
+            <arg line="commit -m 'Auto commit from Ant (no src/main/java changes)'"/>
+        </exec>
+
+        <exec executable="git">
+            <arg line="push"/>
+        </exec>
+
+        <exec executable="git" outputproperty="current.head" failonerror="true">
+            <arg line="rev-parse HEAD"/>
+        </exec>
+
+        <replaceregexp file="build.properties"
+                       match="^first\.rev=.*$"
+                       replace="first.rev=${current.head}"
+                       byline="true"/>
+
+        <echo message="====== DIFF COMPLETED: изменения запушены, first.rev обновлён ======"/>
+    </target>
+
+
+</project>
