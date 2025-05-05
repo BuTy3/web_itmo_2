@@ -1,7 +1,6 @@
 import ru.itmo.webserver.beans.ResultBean;
 import ru.itmo.webserver.res.Result;
 
-//import org.testng.annotations.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
