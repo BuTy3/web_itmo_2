@@ -106,48 +106,14 @@
     </target>
 
     <target name="diff">
-        <echo message="====== DIFF STARTED ======"/>
-
-        <exec executable="git" outputproperty="changed.files" failonerror="false">
-            <arg line="diff --name-only ${first.rev} HEAD"/>
+        <echo message="***** DIFF STARTED *****"/>
+        <exec executable="python3" failonerror="true">
+            <arg value="diff_check.py"/>
         </exec>
-
-        <exec executable="git" output="${diff.file}" failonerror="false">
-            <arg value="diff"/>
-            <arg value="${first.rev}"/>
-            <arg value="HEAD"/>
-        </exec>
-
-        <condition property="has.main.changes">
-            <matches string="${changed.files}" pattern="^src/main/java/.*" multiline="true"/>
-        </condition>
-
-        <fail if="has.main.changes"
-              message="Изменены файлы в src/main/java — коммит запрещён. DIFF сохранён в ${diff.file}"/>
-
-        <exec executable="git">
-            <arg line="add ."/>
-        </exec>
-
-        <exec executable="git">
-            <arg line="commit -m 'Auto commit from Ant (no src/main/java changes)'"/>
-        </exec>
-
-        <exec executable="git">
-            <arg line="push"/>
-        </exec>
-
-        <exec executable="git" outputproperty="current.head" failonerror="true">
-            <arg line="rev-parse HEAD"/>
-        </exec>
-
-        <replaceregexp file="build.properties"
-                       match="^first\.rev=.*$"
-                       replace="first.rev=${current.head}"
-                       byline="true"/>
-
-        <echo message="====== DIFF COMPLETED: изменения запушены, first.rev обновлён ======"/>
+        <echo message="***** DIFF COMPLETED *****"/>
     </target>
 
 
 </project>
+
+<!---->
