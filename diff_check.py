@@ -6,15 +6,18 @@ changed_files = result.stdout.strip().split("\n")
 
 # Загружаем пути, за которыми нужно следить
 with open("params.props", "r") as f:
-    important_files = [line.strip() for line in f if line.strip()]
+    tracked_paths = [line.strip() for line in f if line.strip()]
 
-# Проверяем, есть ли изменения в .java
-java_changed = any(f.endswith(".java") for f in changed_files if f)
+# Проверяем, были ли изменения в отслеживаемых путях
+is_blocked_change = any(
+    any(changed.startswith(tracked) for tracked in tracked_paths)
+    for changed in changed_files if changed
+)
 
-if not java_changed:
-    print("[OK] Нет изменений в .java-файлах. Выполняем авто-коммит.")
-    subprocess.run(["git", "add", "."], check=True)
-    subprocess.run(["git", "commit", "-m", "Auto commit (без изменений в .java)"], check=True)
-else:
-    print("[WARN] Обнаружены изменения в .java-файлах. Коммит отменён.")
+if is_blocked_change:
+    print("[WARN] Найдены изменения в отслеживаемых путях из params.props. Коммит отменён.")
     exit(1)
+else:
+    print("[OK] Нет изменений в отслеживаемых путях. Выполняем авто-коммит.")
+    subprocess.run(["git", "add", "."], check=True)
+    subprocess.run(["git", "commit", "-m", "Auto commit (нет изменений в критичных файлах)"], check=True)

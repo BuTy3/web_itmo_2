@@ -1,9 +1,0 @@
-Testsuite: CalculatorTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,019 sec
-------------- Standard Output ---------------
-x: 0.0, y: 0.0, r: 1.0
-x: 1.0, y: 1.0, r: 1.0
-------------- ---------------- ---------------
-
-Testcase: testCalcHit[0] took 0,015 sec
-Testcase: testCalcHit[1] took 0 sec
