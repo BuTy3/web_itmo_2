@@ -21,13 +21,6 @@
         </classpath>
     </taskdef>
 
-<!--    <taskdef name="scp" classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp">-->
-<!--        <classpath>-->
-<!--            <pathelement location="${lib.dir}/ant-jsch-1.10.14.jar"/>-->
-<!--            <pathelement location="${lib.dir}/jsch-0.1.55.jar"/>-->
-<!--        </classpath>-->
-<!--    </taskdef>-->
-
 
     <target name="compile" depends="clean">
         <echo message="====== COMPILE STARTED ======" />
@@ -106,13 +99,12 @@
     </target>
 
     <target name="diff">
-        <echo message="***** DIFF STARTED *****"/>
+        <echo message="====== DIFF STARTED ======"/>
         <exec executable="python3" failonerror="true">
             <arg value="diff_check.py"/>
         </exec>
-        <echo message="***** DIFF COMPLETED *****"/>
+        <echo message="====== DIFF COMPLETED ======"/>
     </target>
-
 
 </project>
 
