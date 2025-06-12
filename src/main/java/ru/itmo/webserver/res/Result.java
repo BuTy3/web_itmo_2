@@ -61,15 +61,18 @@ public class Result implements Serializable {
      */
     private boolean hit;
 
+    private long timestamp;
+
     public Result() {
     }
 
-    public Result(Long id, double x, double y, double r, boolean hit) {
+    public Result(Long id, double x, double y, double r, boolean hit, long timestamp) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.r = r;
         this.hit = hit;
+        this.timestamp = timestamp;
     }
 
     public Long getId() {
@@ -112,6 +115,14 @@ public class Result implements Serializable {
         this.hit = hit;
     }
 
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
     @Override
     public String toString() {
         return "Result{" +
@@ -120,6 +131,7 @@ public class Result implements Serializable {
                 ", y=" + y +
                 ", r=" + r +
                 ", hit=" + hit +
+                ", timestamp=" + timestamp +
                 '}';
     }
 
@@ -132,11 +144,12 @@ public class Result implements Serializable {
                 Double.compare(result.y, y) == 0 &&
                 Double.compare(result.r, r) == 0 &&
                 hit == result.hit &&
+                timestamp == result.timestamp &&
                 Objects.equals(id, result.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, x, y, r, hit);
+        return Objects.hash(id, x, y, r, hit, timestamp);
     }
 }

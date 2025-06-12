@@ -116,9 +116,9 @@
         <version>5.0.1.Final</version>
         <configuration>
           <hostname>localhost</hostname>
-          <port>21513</port>
-          <username>Vitek</username>
-          <password>admin</password>
+          <port>9990</port>
+          <username>Admin</username>
+          <password>Admin</password>
         </configuration>
       </plugin>
     </plugins>

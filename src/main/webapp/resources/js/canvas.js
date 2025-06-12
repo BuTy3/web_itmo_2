@@ -276,6 +276,14 @@ example.addEventListener('click', (event) => {
     console.log("y_input_place: ", y_input_place);
     x_input_place.value = formattedX;
     y_input_place.value = formattedY;
+    let timestampField = document.querySelector('[id$="timestamp"]');
+    if (timestampField) {
+        timestampField.value = Date.now();
+        console.log("timestamp записан: ", timestampField.value);
+    } else {
+        console.warn("Не найден timestampField!");
+    }
+
 
     let sb_but = document.querySelector('[id$=":sb_but"]');
     sb_but.click();
@@ -293,6 +301,8 @@ function valid_y(){
         return;
     }
 }
+
+
 
 redraw(r_inp);
 valid_y();

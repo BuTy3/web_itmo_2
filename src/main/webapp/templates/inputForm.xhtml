@@ -15,6 +15,7 @@
                     <p:spinner id="r" value="#{inputBean.result.r}" min="0.1" max="3" stepFactor="0.1" required="true"
                                styleClass="select-menu"   />
                 </td>
+                <td><h:inputHidden id="timestamp" value="#{inputBean.result.timestamp}" /></td>
             </tr>
             <tr>
                 <td class="form-row" id="4y" colspan="2">
@@ -30,5 +31,21 @@
             </tr>
         </table>
     </h:form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("form");
+
+            form.addEventListener("submit", (event) => {
+                const timestampField = document.getElementById("form:timestamp");
+                if (timestampField) {
+                    timestampField.value = Date.now();
+                    console.log("timestamp (submit):", timestampField.value);
+                } else {
+                    console.warn("Скрытое поле времени не найдено при submit");
+                }
+            });
+        });
+    </script>
 
 </ui:composition>
